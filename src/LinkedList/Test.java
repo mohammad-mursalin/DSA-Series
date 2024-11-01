@@ -12,5 +12,9 @@ public class Test {
         list.add(8);
 
         list.show();
+
+        list.addAt(2, 5);
+
+        list.show();
     }
 }
