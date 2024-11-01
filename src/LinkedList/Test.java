@@ -13,7 +13,7 @@ public class Test {
 
         list.show();
 
-        list.addAt(2, 5);
+        list.insertAt(4, 5);
 
         list.show();
     }

@@ -33,23 +33,28 @@ public class LinkedList {
         System.out.println();
     }
 
-    public void addAt(int i, int v) {
+    public void insertAtFirst(int data) {
         Node newNode = new Node();
-        Node nextNode;
-        newNode.data = v;
+        newNode.data = data;
+        newNode.next = head;
+        head = newNode;
+    }
 
-        int count = 0;
+    public void insertAt(int index, int data) {
+        Node newNode = new Node();
+        newNode.data = data;
+        newNode.next = null;
+
         Node node = head;
 
-        while (node.next != null) {
-            node = node.next;
-            count++;
-            nextNode = node.next;
-
-            if(count == i-1){
-                node.next = newNode;
-                newNode.next = nextNode;
+        if(index == 0)
+            insertAtFirst(data);
+        else {
+            for(int i = 0 ; i < index - 1 ; i++) {
+                node = node.next;
             }
+            newNode.next = node.next;
+            node.next = newNode;
         }
     }
 }
