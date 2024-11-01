@@ -14,6 +14,11 @@ public class Test {
         list.show();
 
         list.insertAt(4, 5);
+        list.show();
+
+        list.removeFirst();
+        list.show();
+        list.removeAt(2);
 
         list.show();
     }

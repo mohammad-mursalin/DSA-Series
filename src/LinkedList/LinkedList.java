@@ -57,4 +57,23 @@ public class LinkedList {
             node.next = newNode;
         }
     }
+
+    public void removeFirst() {
+        head = head.next;
+    }
+
+    public void removeAt(int index) {
+        Node node = head;
+
+        if(index == 0)
+            removeFirst();
+        else {
+            for (int i = 0; i < index - 1; i++) {
+                node = node.next;
+            }
+            Node n = node.next;
+            node.next = n.next;
+            n.next = null;
+        }
+    }
 }
