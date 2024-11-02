@@ -11,13 +11,15 @@ public class Test {
         stack.push(5);
 
         stack.show();
-
+        System.out.println(stack.size());
         System.out.println(stack.pop());
 
         stack.show();
-
+        System.out.println(stack.size());
         System.out.println(stack.peek());
 
+        stack.push(2);
+        System.out.println("is it empty ? " + stack.isEmpty());
         stack.show();
     }
 }

@@ -19,9 +19,16 @@ public class Stack {
     }
 
     public int peek() {
-        top--;
-        int data = stack[top];
+        int data = stack[top-1];
         return data;
+    }
+
+    public int size() {
+        return top;
+    }
+
+    public boolean isEmpty() {
+        return top == 0;
     }
 
     public void show() {
