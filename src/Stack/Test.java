@@ -21,5 +21,11 @@ public class Test {
         stack.push(2);
         System.out.println("is it empty ? " + stack.isEmpty());
         stack.show();
+        stack.push(2);
+        stack.push(1);
+        stack.push(2);
+        stack.push(1);
+
+        stack.show();
     }
 }

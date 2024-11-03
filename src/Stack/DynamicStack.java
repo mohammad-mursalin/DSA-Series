@@ -1,18 +1,23 @@
 package Stack;
 
-public class Stack {
+public class DynamicStack {
 
-    int[] stack = new int[5];
+    int capacity = 2;
+    int[] stack = new int[capacity];
     int top = 0;
 
     public void push(int data) {
-        if(top == 5) {
-            System.out.println("stack limit over");
+        if(top == capacity-1) {
+            int length = size();
+            int[] newStack = new int[capacity*2];
+            System.arraycopy(stack, 0, newStack, 0, length);
+            stack = newStack;
+            capacity *= 2;
         }
-        else {
-            stack[top] = data;
-            top++;
-        }
+
+        stack[top] = data;
+        top++;
+
     }
 
     public int pop() {
@@ -24,7 +29,13 @@ public class Stack {
         top--;
         data = stack[top];
         stack[top] = 0;
-
+        if(top == (capacity/2)-1) {
+            int length = size();
+            int[] newStack = new int[capacity/2];
+            System.arraycopy(stack, 0, newStack, 0, length);
+            stack = newStack;
+            capacity /=2;
+        }
         return data;
     }
 
@@ -42,7 +53,7 @@ public class Stack {
     }
 
     public void show() {
-        for(int i = 0 ; i < 5 ; i++) {
+        for(int i = 0 ; i < capacity ; i++) {
             System.out.print(stack[i] +" ");
         }
         System.out.println();
