@@ -2,35 +2,34 @@ package Tree;
 
 public class BinaryTree {
 
-    Node rootNode = new Node();
+    Node rootNode;
 
     public void insert(int data) {
-        insertItem(rootNode, data);
+        rootNode = insertItem(rootNode, data);
     }
 
-    private void insertItem(Node rootNode, int data) {
-        if(rootNode.data == -1) {
-            rootNode.data = data;
-        }
-        else {
-            if(rootNode.data > data) {
-                if(rootNode.leftNode == null) {
-                    rootNode.leftNode = new Node();
-                    rootNode.leftNode.data = data;
-                }
-                else {
-                    insertItem(rootNode.leftNode, data);
-                }
-            }
-            else if(rootNode.data < data) {
-                if(rootNode.rightNode == null) {
-                    rootNode.rightNode = new Node();
-                    rootNode.rightNode.data = data;
-                }
-                else {
-                    insertItem(rootNode.rightNode, data);
-                }
-            }
+    private Node insertItem(Node root, int data) {
+        if(root == null)
+            root = new Node(data);
+
+        else if(root.data > data)
+            root.leftNode = insertItem(root.leftNode, data);
+
+        else if(root.data < data)
+            root.rightNode = insertItem(root.rightNode, data);
+
+        return root;
+    }
+
+    public void inOrder() {
+        inOrderRec(rootNode);
+    }
+
+    public void inOrderRec(Node root) {
+        if(root != null) {
+            inOrderRec(root.leftNode);
+            System.out.print(root.data + " ");
+            inOrderRec(root.rightNode);
         }
     }
 }
